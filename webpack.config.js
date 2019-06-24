@@ -1,13 +1,17 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
-
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
-  entry: "./src/js/index.js",
+  // entry: "./src/js/index.js",
+  entry: {
+    index: "./src/js/index.js",
+    main: "./src/css/style.css",
+  },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist/js')
+    filename: 'js/[name].js',
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
@@ -31,6 +35,16 @@ module.exports = {
             options: { minimize: true }
           }
         ]
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'postcss-loader'
+          ]
+        })
       }
     ]
   },
@@ -47,6 +61,9 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/content/index.html",
       filename: "./content/index.html"
+    }),
+    new ExtractTextPlugin({
+      filename: "./css/[name].css"
     })
   ]
 };
