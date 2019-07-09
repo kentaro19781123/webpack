@@ -1,7 +1,19 @@
-console.log(`あ`)
+'use strict'
 
-const arr = [1, 2, 3]
-const arry = () => console.log(...arr)
-arry()
+// import 'lazysizes'
+// import 'lazysizes/plugins/unveilhooks/ls.unveilhooks'
+// import { closestEl } from './modules/closestEl'
 
-// import "./style.css";
+const PROJECTNAME = {
+  init () {
+    console.log('あ')
+
+    const arr = [1, 2, 3]
+    const arry = () => console.log(...arr)
+    arry()
+  }
+}
+
+PROJECTNAME.init()
+
+window.PROJECTNAME = PROJECTNAME

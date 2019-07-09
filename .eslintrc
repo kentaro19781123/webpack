@@ -1,0 +1,11 @@
+{
+  "extends": [
+    # "eslint:recommended"
+    "standard"
+  ],
+  "parser": "babel-eslint",
+  "globals": {
+    "PROJECTNAME": true,
+    "window": true
+  }
+}
