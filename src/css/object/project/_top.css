@@ -1,0 +1,19 @@
+h1 {
+  color: #c00;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+.contents {
+  height: 100%;
+  display: flex;
+}
+
+.item {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc;
+  /* transform:translate3d(0,0,0); */
+  background: url('../img/photo.jpg');
+}

@@ -2,9 +2,10 @@ const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 module.exports = {
-  // entry: "./src/js/index.js",
   entry: {
     index: "./src/js/index.js",
     main: "./src/css/style.css",
@@ -17,7 +18,6 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
@@ -25,26 +25,34 @@ module.exports = {
               "@babel/preset-env"
             ]
           }
-        }
+        },
+        exclude: /node_modules/
       },
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader",
-            options: { minimize: true }
+        test: /\.pug$/,
+        use: {
+          loader: 'pug-loader',
+          options: {
+            pretty: true
           }
-        ]
+        },
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'css-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                url: false
+              }
+            },
             'postcss-loader'
           ]
-        })
+        }),
+        exclude: /node_modules/
       }
     ]
   },
@@ -54,14 +62,19 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin([{
+      from: './src/img',
+      to: 'img',
+    }]),
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
+      template: "./src/page/index.pug",
       filename: "./index.html"
     }),
     new HtmlWebPackPlugin({
-      template: "./src/content/index.html",
+      template: "./src/page/content/index.pug",
       filename: "./content/index.html"
     }),
+    new FixStyleOnlyEntriesPlugin(),
     new ExtractTextPlugin({
       filename: "./css/[name].css"
     })

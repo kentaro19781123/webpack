@@ -15,3 +15,4 @@ bower_components/
 *.log
 
 dist/
+package-lock.json
