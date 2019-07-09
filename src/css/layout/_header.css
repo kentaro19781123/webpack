@@ -1,4 +1,4 @@
 .header {
-  width: 960px;
+  width: $contentWidth;
   margin: 0 auto;
 }

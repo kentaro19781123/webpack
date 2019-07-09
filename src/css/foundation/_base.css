@@ -14,11 +14,11 @@ html {
 }
 
 body {
-  font-size: $fontSize11;
+  font-size: $fontM;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
 }
 
 a {
-  color: $linkColorDefault;
+  color: $linkColor;
 }

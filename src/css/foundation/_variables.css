@@ -1,3 +1,7 @@
 
-$fontSize11: 1.1rem;
-$linkColorDefault: #0f77be;
+$contentWidth: 960px;
+$fontL: 2rem;
+$fontM: 1.4rem;
+$fontS: 1.2rem;
+$linkColor: #0f77be;
+$space:8px;
