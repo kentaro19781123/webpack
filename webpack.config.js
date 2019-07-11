@@ -1,7 +1,7 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries')
 
@@ -46,18 +46,16 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                url: false
-              }
-            },
-            'postcss-loader'
-          ]
-        }),
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: false
+            }
+          },
+          'postcss-loader'
+        ],
         exclude: /node_modules/
       }
     ]
@@ -81,7 +79,7 @@ module.exports = {
       filename: './content/index.html'
     }),
     new FixStyleOnlyEntriesPlugin(),
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: './css/[name].css'
     })
   ]

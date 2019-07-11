@@ -5,6 +5,9 @@ import module1 from './modules/module_1'
 const PROJECTNAME = {
   init () {
     const item = document.body.querySelector('.js-item')
+    if (!item) {
+      return
+    }
     module1.modulesConsole(item)
   },
   clickEvent (items = document.body.querySelectorAll('.js-item')) {
