@@ -1,19 +1,26 @@
 'use strict'
 
-// import 'lazysizes'
-// import 'lazysizes/plugins/unveilhooks/ls.unveilhooks'
-// import { closestEl } from './modules/closestEl'
+import module1 from './modules/module_1'
 
 const PROJECTNAME = {
   init () {
-    console.log('あ')
+    const item = document.body.querySelector('.js-item')
+    module1.modulesConsole(item)
+  },
+  clickEvent (items = document.body.querySelectorAll('.js-item')) {
+    if (!items.length) {
+      return
+    }
 
-    const arr = [1, 2, 3]
-    const arry = () => console.log(...arr)
-    arry()
+    for (const item of items) {
+      item.addEventListener('click', () => {
+        module1.modulesClick()
+      })
+    }
   }
 }
 
 PROJECTNAME.init()
+PROJECTNAME.clickEvent()
 
 window.PROJECTNAME = PROJECTNAME

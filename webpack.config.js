@@ -1,14 +1,14 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const HtmlWebPackPlugin = require("html-webpack-plugin")
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const HtmlWebPackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries')
 
 module.exports = {
   entry: {
-    index: "./src/js/index.js",
-    main: "./src/css/style.css",
+    index: './src/js/index.js',
+    main: './src/css/style.css'
   },
   output: {
     filename: 'js/[name].js',
@@ -17,18 +17,18 @@ module.exports = {
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "eslint-loader"
+        loader: 'eslint-loader'
       },
       {
         test: /\.js$/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             presets: [
-              "@babel/preset-env"
+              '@babel/preset-env'
             ]
           }
         },
@@ -70,19 +70,19 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([{
       from: './src/img',
-      to: 'img',
+      to: 'img'
     }]),
     new HtmlWebPackPlugin({
-      template: "./src/page/index.pug",
-      filename: "./index.html"
+      template: './src/page/index.pug',
+      filename: './index.html'
     }),
     new HtmlWebPackPlugin({
-      template: "./src/page/content/index.pug",
-      filename: "./content/index.html"
+      template: './src/page/content/index.pug',
+      filename: './content/index.html'
     }),
     new FixStyleOnlyEntriesPlugin(),
     new ExtractTextPlugin({
-      filename: "./css/[name].css"
+      filename: './css/[name].css'
     })
   ]
-};
+}
