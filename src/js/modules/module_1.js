@@ -2,7 +2,7 @@
 
 export const modules = {
   modulesConsole (el) {
-    el.innerHTML = 'js-itemです'
+    el.innerHTML = 'js-item'
   },
   modulesClick () {
     const arr = [1, 2, 3]
