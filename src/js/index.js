@@ -13,11 +13,11 @@ const PROJECTNAME = {
     module1.modulesConsole(item)
   },
   init2 () {
-    const item = document.body.querySelector('.js-item')
+    const item = document.body.querySelector('.js-ajax')
     if (!item) {
       return
     }
-    module2(3)
+    module2.checkapi(item)
   },
   clickEvent (items = document.body.querySelectorAll('.js-item')) {
     if (!items.length) {
