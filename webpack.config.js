@@ -2,6 +2,7 @@ const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries')
 
@@ -82,5 +83,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: './css/[name].css'
     })
-  ]
+  ],
+  optimization: {
+    minimizer: [new OptimizeCSSAssetsPlugin({})]
+  }
 }
