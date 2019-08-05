@@ -3,6 +3,7 @@
 import module1 from './modules/module_1'
 import module2 from './modules/module_2'
 import module3 from './modules/module_3'
+import module4 from './modules/module_4'
 
 const PROJECTNAME = {
   init () {
@@ -34,6 +35,9 @@ const PROJECTNAME = {
     window.addEventListener('scroll', () => {
       module3()
     })
+  },
+  inputFunc () {
+    module4()
   }
 }
 
@@ -41,5 +45,6 @@ PROJECTNAME.init()
 PROJECTNAME.init2()
 PROJECTNAME.clickEvent()
 PROJECTNAME.scrollFunc()
+PROJECTNAME.inputFunc()
 
 window.PROJECTNAME = PROJECTNAME
