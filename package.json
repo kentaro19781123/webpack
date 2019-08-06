@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --open"
+    "dev": "webpack-dev-server --open --config ./config/webpack.config.js"
   },
   "keywords": [],
   "author": "",
@@ -55,5 +55,15 @@
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2",
     "webpack-fix-style-only-entries": "^0.3.0"
-  }
+  },
+  "browserslist": [
+    "ie 11",
+    "last 1 Edge versions",
+    "last 1 Firefox versions",
+    "last 1 Chrome versions",
+    "last 1 Safari versions",
+    "iOS >= 9",
+    "Android >= 4.4",
+    "last 1 ChromeAndroid versions"
+  ]
 }

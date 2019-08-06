@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -21,16 +21,17 @@ module.exports = {
         enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader'
+        loader: 'eslint-loader',
+        options: {
+          configFile: './config/.eslintrc'
+        }
       },
       {
         test: /\.js$/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              '@babel/preset-env'
-            ]
+            configFile: './config/.babelrc'
           }
         },
         exclude: /node_modules/
@@ -55,7 +56,15 @@ module.exports = {
               url: false
             }
           },
-          'postcss-loader'
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: './config/'
+              }
+            }
+          }
+          // 'postcss-loader'
         ],
         exclude: /node_modules/
       }

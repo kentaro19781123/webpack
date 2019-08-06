@@ -37,7 +37,15 @@ const PROJECTNAME = {
     })
   },
   inputFunc () {
-    module4()
+    const currentPosBtn = document.querySelector('.js-current')
+    const hiddenInput = document.querySelector('.js-hidden');
+    currentPosBtn.addEventListener('click', (e) => {
+      e.preventDefault()
+      const target = e.currentTarget
+      module4(target)
+      const lat = target.dataset.lat
+      hiddenInput.setAttribute('value', lat);
+    });
   }
 }
 
