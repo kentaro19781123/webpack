@@ -7,7 +7,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries')
 
-var rootPath = path.resolve(__dirname, '../')
+const rootPath = path.resolve(__dirname, '../')
 const targetTypes = { pug : 'html'}
 
 const entriesList = {};
