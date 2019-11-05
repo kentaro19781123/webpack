@@ -41,7 +41,7 @@ const config = {
         exclude: /node_modules/,
         loader: 'eslint-loader',
         options: {
-          configFile: './config/.eslintrc'
+          configFile: './config/.eslintrc.json'
         }
       },
       {

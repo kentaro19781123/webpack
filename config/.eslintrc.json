@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "eslint:recommended"
-    # "standard"
-  ],
+  "extends": "eslint:recommended",
   "parserOptions": {
     "parser": "babel-eslint",
     "sourceType": "module"
@@ -16,7 +13,7 @@
     "PROJECTNAME": true,
     "window": true
   },
-  rules: {
+  "rules": {
     "no-console": "off"
   }
 }
