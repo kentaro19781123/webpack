@@ -1,0 +1,12 @@
+.c-ac {
+  background: #ccc;
+  color: #000;
+  border-radius: 4px;
+  padding: 20px;
+  width: 200px;
+  margin: 30px;
+  cursor: pointer;
+  ul {
+    display: none;
+  }
+}
