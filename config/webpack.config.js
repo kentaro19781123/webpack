@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const globule = require('globule')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
@@ -8,6 +9,17 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries')
 
 const rootPath = path.resolve(__dirname, '../')
+const hostPath = require('./host.path')
+
+let buildEnv
+if (process.env.NODE_ENV === 'production') {
+  buildEnv = 'prod'
+} else if(process.env.NODE_ENV === 'stage') {
+  buildEnv = 'stage'
+} else {
+  buildEnv = 'local'
+}
+
 const targetTypes = { pug : 'html'}
 
 const entriesList = {};
@@ -31,6 +43,7 @@ const config = {
   },
   output: {
     filename: 'js/[name].js',
+    publicPath: hostPath.host[buildEnv],
     path: path.resolve(__dirname, '../dist')
   },
   module: {
@@ -100,7 +113,11 @@ const config = {
     }]),
     new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
-      filename: './css/[name].css'
+      filename: 'css/[name].css?v=[hash]'
+    }),
+    new webpack.DefinePlugin({
+      'HOST_PATH': JSON.stringify(hostPath.host[buildEnv]),
+      'API_PATH': JSON.stringify(hostPath.api[buildEnv])
     })
   ],
   optimization: {
@@ -111,7 +128,8 @@ const config = {
 for(const [ targetName, srcName ] of Object.entries(getEntriesList())) {
   config.plugins.push(new HtmlWebPackPlugin({
     filename : targetName,
-    template : srcName
+    template : srcName,
+    hash: true
   }));
 }
 
