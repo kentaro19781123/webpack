@@ -33,7 +33,7 @@ const getEntriesList = () => {
       entriesList[targetName] = `${rootPath}/src/${srcName}`;
     }
   }
-  return entriesList;
+ return entriesList;
 }
 
 const config = {
@@ -113,7 +113,7 @@ const config = {
     }]),
     new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css?v=[hash]'
+      filename: 'css/[name].css'
     }),
     new webpack.DefinePlugin({
       'HOST_PATH': JSON.stringify(hostPath.host[buildEnv]),

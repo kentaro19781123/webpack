@@ -59,13 +59,13 @@
     "webpack-fix-style-only-entries": "^0.3.0"
   },
   "browserslist": [
-    "ie 11",
+    "ie >= 9",
     "last 1 Edge versions",
     "last 1 Firefox versions",
     "last 1 Chrome versions",
     "last 1 Safari versions",
-    "iOS >= 9",
-    "Android >= 4.4",
+    "iOS >= 11",
+    "Android >= 4.5",
     "last 1 ChromeAndroid versions"
   ]
 }

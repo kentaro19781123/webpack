@@ -16,3 +16,8 @@
   background: url('../img/photo.jpg');
   overflow: hidden;
 }
+
+.transform
+ {
+  transform:rotate(135deg);
+ }
